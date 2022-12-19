@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: grey;
 }
 
 .main-container {
@@ -69,4 +70,42 @@ img {
 /* Utility Classes */
 .hidden {
     display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+/* Sketching Area Container Styling*/
+.sketchpad-container {
+    margin: 1rem 25rem;
+}
+
+.nav-container {
+    display: flex;
+    height: 100%;
+    background-color: #aa00ff;
+    margin: 0 1rem;
+    padding: 1rem;
+    border-radius: 50px;
+}
+
+.vertical-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.active {
+    color: #000;
 }
