@@ -5,8 +5,11 @@ window.addEventListener("DOMContentLoaded", event => {
     const sketchPadContainer = document.querySelector(".sketchpad-container");
     const heroContainer = document.querySelector(".hero-container");
     const imageContainer = document.querySelector(".image-container");
+    const icons = document.querySelectorAll('.nav-item');
 
     let coloringMode = true;
+    let penMode = true;
+    let erasingMode = false;
 
     function populateBoard () {
         for (let i = 0; i < 70; i++) {
@@ -34,6 +37,18 @@ window.addEventListener("DOMContentLoaded", event => {
         }
     })
 
+    icons.forEach((icon) => {
+        icon.addEventListener('click', event => {
+            if (icon.dataset.property === "eraser") {
+                penMode = false;
+                erasingMode = true;
+            } else {
+                penMode = true;
+                erasingMode = false;
+            }
+        })
+    })
+
     btn.addEventListener('click', event => {
         heroContainer.classList.add("hidden");
         imageContainer.classList.add("hidden");
@@ -43,12 +58,14 @@ window.addEventListener("DOMContentLoaded", event => {
         populateBoard();
 
         const pixels = document.querySelectorAll('.pixel');
-        console.log(pixels);
+        // console.log(pixels);
         pixels.forEach((pixel) => {
             // console.log(pixel);
             pixel.addEventListener('mouseover', event => {
-                if (coloringMode) {
+                if (coloringMode && penMode) {
                     event.target.style.backgroundColor = "black";
+                } else if (coloringMode && erasingMode) {
+                    event.target.style.backgroundColor = "white";
                 }
             });
         });
